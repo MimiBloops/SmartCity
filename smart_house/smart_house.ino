@@ -6,6 +6,7 @@
 #include "notes.h"
 #include <Servo.h>
 #include <LiquidCrystal.h>
+#include <SoftwareSerial.h>
 
 const byte ROWS = 4;
 const byte COLS = 3;
@@ -16,12 +17,12 @@ char keys[ROWS][COLS] ={
   {'#','0','*'}
 };
 // ---------------------- PINS DECLARATION ---------------------- //
-const int setAlarmButtonPin = 10;
+const int setAlarmButtonPin = 30;
 const int resetAlarmButtonPin = 13;
 
 RTC_DS3231 rtc;
  
-const int buz = 11;
+const int buz = 31;
 
 const int resistorPin = A0;
 
@@ -33,6 +34,7 @@ byte rowPins[ROWS] = {22, 23, 24, 25};
 byte colPins[COLS] = {26, 27, 28};
 
 LiquidCrystal lcd(2, 3, 4, 5, 6, 7);
+SoftwareSerial BTserial(10,11);
 
 // ---------------------- VARIABLES DECLARATION ---------------------- //
 int melody[] = {
@@ -78,6 +80,8 @@ Servo servoShutter;
 void setup()
 {
   Serial.begin(9600);
+  BTserial.begin(38400);
+  
   pinMode(setAlarmButtonPin, INPUT_PULLUP);
   pinMode(resetAlarmButtonPin, INPUT_PULLUP);
   pinMode(buz, OUTPUT);
@@ -122,6 +126,8 @@ void loop()
   setAlarmButtonState = digitalRead(setAlarmButtonPin);
   resetAlarmButtonState = digitalRead(resetAlarmButtonPin);
   resistorValue = analogRead(resistorPin);
+
+  BTserial.print("Coucou");
 
   
   if(setAlarmButtonState == 0){

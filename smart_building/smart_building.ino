@@ -2,22 +2,28 @@
 #include <MFRC522.h>
 #include <Servo.h>
 #include <LiquidCrystal.h>
+#include <SoftwareSerial.h>
  
 #define SS_PIN 10
 #define RST_PIN 9
 
 MFRC522 mfrc522(SS_PIN, RST_PIN);
 LiquidCrystal lcd(2, 3, 4, 5, 6, 7);
+SoftwareSerial BTserial(0,1);
 
 int led = A0;
 int servoPin = 8;
 int numberOfScan = 0;
+
+char dataHouse;
+String data = "";
 
 Servo servo;
  
 void setup() 
 {
   Serial.begin(9600);
+  BTserial.begin(38400);
   SPI.begin();
   lcd.begin(16,2);
   
@@ -38,6 +44,11 @@ void setup()
 }
 void loop() 
 { 
+  if(BTserial.available() > 0){
+    dataHouse = BTserial.read();
+    Serial.println("DATA FROM HOUSE :");
+    Serial.println(dataHouse);
+  }
   lcd.clear();
   lcd.print("Scan your badge !");
   if ( ! mfrc522.PICC_IsNewCardPresent()) 
