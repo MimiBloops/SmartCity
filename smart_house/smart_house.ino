@@ -90,6 +90,7 @@ void setup()
     Serial.println("Couldn't find RTC");
     while(1);
   }
+  rtc.adjust(DateTime(F(__DATE__),F(__TIME__)));
 
   lcd.begin(16,2);
   
@@ -167,8 +168,6 @@ void loop()
     resetVariables();
   }
 
-  Serial.println("RESISTOR VALUE");
-  Serial.println(resistorValue);
 
   if(resistorValue <= 144){
     digitalWrite(ledHousePin, HIGH);
