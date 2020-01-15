@@ -94,7 +94,7 @@ void setup()
     Serial.println("Couldn't find RTC");
     while(1);
   }
-  rtc.adjust(DateTime(F(__DATE__),F(__TIME__)));
+  //rtc.adjust(DateTime(F(__DATE__),F(__TIME__)));
 
   lcd.begin(16,2);
   
@@ -127,9 +127,6 @@ void loop()
   resetAlarmButtonState = digitalRead(resetAlarmButtonPin);
   resistorValue = analogRead(resistorPin);
 
-  
-
-  
   if(setAlarmButtonState == 0){
     if(alarmHour == 0 && alarmMinute == 0){
       if(flag == 0){
@@ -160,6 +157,7 @@ void loop()
 
   if(actualHour == alarmHour && actualMin == alarmMinute && alarmTriggered == 0){
     Serial.println("Alarm ON");
+    BTserial.print("1");
     lcd.clear();
     lcd.setCursor(3,0);
     lcd.print("ALARM ON !!");
