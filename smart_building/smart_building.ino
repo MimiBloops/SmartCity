@@ -15,7 +15,7 @@ int led = A0;
 int servoPin = 8;
 int numberOfScan = 0;
 
-char dataHouse;
+String dataHouse;
 String data = "";
 
 Servo servo;
@@ -44,8 +44,8 @@ void setup()
 }
 void loop() 
 { 
-  if(BTserial.available() > 0){
-    dataHouse = BTserial.read();
+  while(BTserial.available()){
+    dataHouse = BTserial.readString();
     Serial.println("DATA FROM HOUSE :");
     Serial.println(dataHouse);
   }

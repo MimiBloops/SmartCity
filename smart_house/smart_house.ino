@@ -127,7 +127,7 @@ void loop()
   resetAlarmButtonState = digitalRead(resetAlarmButtonPin);
   resistorValue = analogRead(resistorPin);
 
-  BTserial.print("Coucou");
+  
 
   
   if(setAlarmButtonState == 0){
@@ -146,6 +146,7 @@ void loop()
         flag = 0;
         getHour();
         getMinute();
+        BTserial.print((String)alarmHour + ":" + (String)alarmMinute);
         delay(2000);
       }
     } else{
