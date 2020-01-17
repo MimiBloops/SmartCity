@@ -146,10 +146,12 @@ void loop()
     }
     else if(numberOfScan == 1){
       lcd.clear();
-      lcd.print("Have a good evening");
+      lcd.print("Goodbye");
       lcd.setCursor(2,1);
       lcd.print("Gustave !");
       digitalWrite(led, LOW);
+      digitalWrite(ledComputerPin, LOW);
+      digitalWrite(ledHeaterPin, LOW);
       numberOfScan = 0;
     }
     
