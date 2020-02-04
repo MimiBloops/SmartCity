@@ -13,6 +13,12 @@ Clone the project in order to use the two scripts. In order to use them you will
 - RTClib
 - SerialRFID
 
+## Smart House
+
+The smart house is represented here with an alarm clock, shutter and the lamp.
+Here's a picture of the representation : 
+![Image of the smart house](https://github.com/mimimario/SmartCity/blob/master/Images/_DSC9284.jpg)
+
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
