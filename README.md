@@ -20,5 +20,10 @@ Here's a picture of the representation :
 ![Image of the smart house](https://github.com/mimimario/SmartCity/blob/master/Images/_DSC9284.jpg)
 
 
+## Smart City
+
+The smart city is represented in our case with a gate for the parking, the heater, Gustave's computer and the light of the office.
+![Image of the smart city](https://github.com/mimimario/SmartCity/blob/master/Images/_DSC9285.jpg)
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
